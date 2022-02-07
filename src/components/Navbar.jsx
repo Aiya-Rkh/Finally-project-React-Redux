@@ -12,12 +12,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { AddShoppingCart, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getClothess } from "../redux/actions/ClientAction";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,7 +60,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavbarWidthSearch() {
+  const search = new URLSearchParams(window.location.search);
+  const [searchValue, setSearchValue] = React.useState(search.get("q") || "");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -82,6 +87,15 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const searchClothes = (key, value) => {
+    console.dir(value);
+    search.set(key, value);
+    let newPath = `${window.location.pathname}?${search.toString()}`;
+    navigate(newPath);
+    setSearchValue(search.get("q") || "");
+    dispatch(getClothess());
   };
 
   const menuId = "primary-search-account-menu";
@@ -175,11 +189,13 @@ export default function PrimarySearchAppBar() {
             style={{ marginRight: "2%" }}
             sx={{ display: { sm: "block" } }}
           >
-            <img
-              style={{ width: "100px", paddingTop: "9px" }}
-              src="https://www.spellbrand.com/images/blog/images/asos-boutique-logo-design.jpg"
-              alt=""
-            />
+            <Link to="/">
+              <img
+                style={{ width: "100px", paddingTop: "9px" }}
+                src="https://www.spellbrand.com/images/blog/images/asos-boutique-logo-design.jpg"
+                alt=""
+              />
+            </Link>
           </Typography>
           <Typography
             variant="h8"
@@ -202,10 +218,7 @@ export default function PrimarySearchAppBar() {
             style={{ marginRight: "2%" }}
             sx={{ display: { xs: "none", sm: "block", mr: "2" } }}
           >
-            <Link
-              to="/mens-clothes"
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               <strong>МУЖСКОЕ</strong>
             </Link>
           </Typography>
@@ -221,8 +234,10 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              value={searchValue}
+              onChange={(e) => searchClothes("q", e.target.value)}
               placeholder="Искать товары…"
-              inputProps={{ "aria-label": "search" }}
+              // inputProps={{ "aria-label": "search" }}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

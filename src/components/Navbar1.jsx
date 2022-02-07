@@ -1,4 +1,5 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Navbar1() {
   return (
@@ -22,12 +23,19 @@ export default function Navbar1() {
         >
           <Typography variant="h6">Распродажа</Typography>
         </Box>
-        <Box
-          sx={{ flexGrow: 0.1, display: { xs: "none", md: "flex" } }}
-          style={{ padding: "0 0 0 20px" }}
+        <Link
+          to="/new"
+          style={{
+            listStyleType: "none",
+            color: "white",
+            marginRight: "3%",
+            padding: "0 0 0 40px",
+          }}
         >
-          <Typography>Новинки</Typography>
-        </Box>
+          <Box sx={{ flexGrow: 0.1, display: { xs: "none", md: "flex" } }}>
+            <Typography>Новинки</Typography>
+          </Box>
+        </Link>
         <Box sx={{ flexGrow: 0.1, display: { xs: "none", md: "flex" } }}>
           <Typography>Одежда</Typography>
         </Box>

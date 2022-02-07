@@ -1,16 +1,142 @@
 {
   "clothes": [
     {
-      "name": "akbar",
-      "lastName": "dfbokeeey",
-      "phoneNumber": "5555",
+      "description": "Мини-юбка цвета словоновй кости",
+      "price": 2550,
+      "image": "https://images.asos-media.com/products/mini-yubka-tsveta-slonovoj-kosti-s-razrezom-sboku-ot-komplekta-flounce-london/202002551-1-ivory?$n_480w$&wid=476&fit=constrain",
+      "category": "dress",
+      "id": 7
+    },
+    {
+      "description": "Шакет в стиле oversized в зеленую клетку",
+      "price": 4150,
+      "image": "https://images.asos-media.com/products/shaket-v-stile-oversized-v-zelenuyu-kletku-na-kd/201775273-1-green?$n_480w$&wid=476&fit=constrain",
+      "category":"t-shirts",
+      "id": 8
+    },
+    {
+      "description": "Плюшевая куртка сиреневого цвета Sciffner",
+      "price": 6290,
+      "image": "https://images.asos-media.com/products/plyushevaya-kurtka-sirenevogo-tsveta-na-kd-x-lisa-schiffner/201557046-1-lilac?$n_480w$&wid=476&fit=constrain",
+      "category":"jackets",
+      "id": 3
+    },
+    {
+      "description": "Зеленый атласный комбинезон",
+      "price": 3880,
+      "image": "https://images.asos-media.com/products/zelenyj-atlasnyj-kombinezon-s-zavyazkoj-sboku-i-tsvetochnym-printom-asos-design/201631271-1-greenfloral?$n_480w$&wid=476&fit=constrain",
+      "category":"dress",
       "id": 4
     },
     {
-      "name": "adidas",
-      "lastName": "tufli",
-      "phoneNumber": "10000",
+      "description": "Голубой лонгслив с воротником Urban Revivo",
+      "price": 1790,
+      "image": "https://images.asos-media.com/products/goluboj-longsliv-s-vorotnikom-polo-urban-revivo/200966937-1-blue?$n_480w$&wid=476&fit=constrain",
+      "category":"t-shorts",
+      "id": 5
+    },
+    {
+      "description": "Белая укороченная футболка ellesse",
+      "price": 1790,
+      "image": "https://images.asos-media.com/products/belaya-ukorochennaya-futbolka-ellesse/200754454-1-white?$n_480w$&wid=476&fit=constrain",
+      "category":"t-shorts",
       "id": 6
+    },
+    {
+      "description": "Фактурное платье-рубашка мини цвета Topshop",
+      "price": 3850,
+      "image": "https://images.asos-media.com/products/fakturnoe-plate-rubashka-mini-tsveta-ohry-topshop/201341409-1-ochre?$n_480w$&wid=476&fit=constrain",
+      "category": "dress",
+      "id": 9
+    },
+     {
+      "description": "Укороченная куртка Bershka",
+      "price": 5850,
+      "image": "https://images.asos-media.com/products/sirenevyj-ukorochennyj-puhovik-dickies-atlanta-eksklyuzivno-dlya-asos/24555947-1-purple?$n_480w$&wid=476&fit=constrain",
+      "category":"jackets",
+      "id": 10
+    },
+     {
+      "description": "Оливково-зеленые ботинки на толстой подошве NA-KD",
+      "price": 4590,
+      "image": "https://images.asos-media.com/products/olivkovo-zelenye-botinki-na-tolstoj-podoshve-na-kd/201284220-1-black?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 11
+    },
+    {
+      "description": "Высокие резиновые сапоги черного цвета на толстой подошве Bershka",
+      "price": 4290,
+      "image": "https://images.asos-media.com/products/vysokie-rezinovye-sapogi-chernogo-tsveta-na-tolstoj-podoshve-bershka/200932729-1-black?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 12
+    },
+    {
+      "description": "Черный ботинки на шнуровке Glamorous",
+      "price": 2500,
+      "image": "https://images.asos-media.com/products/chernye-botinki-na-shnurovke-i-massivnoj-podoshve-glamorous/23787133-1-blacksoftpu?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 13
+    },
+    {
+      "description": "Бежевые полусапожки UGG Classic",
+      "price": 2500,
+      "image": "https://images.asos-media.com/products/bezhevye-polusapozhki-ugg-classic/24324212-1-naturalblack?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 14
+    },
+    {
+      "description": "Ботинки для холодной погоды ASOS",
+      "price": 4970,
+      "image": "https://images.asos-media.com/products/botinki-dlya-holodnoj-pogody-na-tolstoj-podoshve-tsveta-haki-asos-design-albie/200367140-1-khaki?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 15
+    },
+    {
+      "description": "Черные сапоги до колена на высокой палтформе ",
+      "price": 5970,
+      "image": "https://images.asos-media.com/products/chernye-sapogi-do-kolena-na-vysokoj-platforme-s-rozovymi-serdechkami-lamoda/23353588-1-black?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 16
+    },
+     {
+      "description": "Бежевые сапоги на массивной подошве Pimkie",
+      "price": 3950,
+      "image": "https://images.asos-media.com/products/bezhevye-sapogi-na-massivnoj-ploskoj-podoshve-pimkie/200972277-1-neutral?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 17
+    },
+    {
+      "description": "Розовые резиновые сапоги в стиле верховой езды ASOS DESIGN",
+      "price": 1950,
+      "image": "https://images.asos-media.com/products/rozovye-rezinovye-sapogi-v-stile-verhovoj-ezdy-asos-design/23635650-1-mauve?$n_480w$&wid=476&fit=constrain",
+      "category":"shoes",
+      "id": 18
+    },
+    {
+      "description": "Платье атласное ASOS DESIGN",
+      "price": 1950,
+      "image": "https://images.asos-media.com/products/zelenoe-atlasnoe-plate-kombinatsiya-midi-topshop/201321459-1-green?$n_480w$&wid=476&fit=constrain",
+      "category":"dress",
+      "id": 19
+    },
+    {
+      "description": "Синее платье макси ASOS DESIGN",
+      "price": 3950,
+      "image": "https://images.asos-media.com/products/sinee-plate-maksi-s-podolom-rybij-hvost-i-vyrezom-serdechkom-asos-design/201438651-1-midblue?$n_480w$&wid=476&fit=constrain",
+      "category":"dress",
+      "id": 20
+    },{
+      "description": "Комбинезон цвета слоновй кости",
+      "price": 4550,
+      "image": "https://images.asos-media.com/products/kombinezon-tsveta-slonovoj-kosti-so-semnoj-nakladkoj-iz-tyulya-i-zavyazkoj-na-shee-starlet-bridal/201933382-1-ivory?$n_480w$&wid=476&fit=constrain",
+      "category":"dress",
+      "id": 21
+    },{
+      "description": "Черная облегающая спортивная майка",
+      "price": 2950,
+      "image": "https://images.asos-media.com/products/chernaya-oblegayuschaya-sportivnaya-majka-s-logotipom-river-island-active/201669156-1-black?$n_480w$&wid=476&fit=constrain",
+      "category":"t-shorts",
+      "id": 22
     }
   ]
 }

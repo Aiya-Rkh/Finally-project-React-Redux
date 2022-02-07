@@ -6,6 +6,8 @@ import {
   TableRow,
   TableCell,
   Button,
+  Container,
+  TableHead,
 } from "@mui/material";
 
 import {
@@ -19,78 +21,91 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { deleteClothes, getClothes } from "../../redux/actions/AdminAction";
+import { getClothess } from "../../redux/actions/ClientAction";
 
 const AdminPage = () => {
   const dispatch = useDispatch();
-  const { clothes } = useSelector((state) => state.clothesReducer);
+  const { clothess } = useSelector((state) => state.clothesClientReducer);
 
   useEffect(() => {
-    dispatch(getClothes());
+    dispatch(getClothess());
   }, []);
 
-  if (!clothes) {
+  if (!clothess) {
     return <h3>Loading</h3>;
   }
 
   // ! тут мы вставляем в таблицу данные,перебираем с map - clothes ,и кнопку удаления и редактирования
 
   return (
-    <TableContainer
-      // component={Paper}
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        margin: "100px 0 220px",
-        borderRadius: 5,
-      }}
-    >
-      <Table sx={{ bgcolor: "snow" }} aria-label="simple table">
-        {/* <TableHead>
-          <TableRow sx={{ bgcolor: "whitesmoke" }}>
-            <TableCell>Название</TableCell>
-            <TableCell align="right">Картинка</TableCell>
-            <TableCell align="right">Цена</TableCell>
-            <TableCell align="right">Состав</TableCell>
-            <TableCell>Изменить</TableCell>
-            <TableCell>Удалить</TableCell>
-          </TableRow>
-        </TableHead> */}
-        <TableBody>
-          {clothes.map((item) => (
-            <TableRow
-              key={item.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {item.name}
-              </TableCell>
-              <TableCell align="right">
-                <img width={80} src={item.image} alt="product-img" />
-              </TableCell>
-              <TableCell align="right">{item.price}</TableCell>
-
-              <TableCell align="right">{item.description}</TableCell>
-              <TableCell>
-                <Link to={`/admin-panel/edit/${item.id}`}>
-                  <Button variant="outlined" color="warning">
-                    <ModeEditOutlineRounded />
-                  </Button>
-                </Link>
-              </TableCell>
-              <TableCell>
-                <Button
-                  color="error"
-                  variant="outlined"
-                  onClick={() => dispatch(deleteClothes(item.id))}
+    <div className="firts-div-admin">
+      <Container>
+        <div className="welcome">
+          <h3>Добро Пожаловать в Административную часть!!!</h3>
+          <Link to="/add">
+            <Button variant="outlined" color="warning">
+              ДОБАВИТЬ НОВЫЙ ТОВАР
+            </Button>
+          </Link>
+        </div>
+        <TableContainer
+          // component={Paper}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "50px 0 220px",
+            borderRadius: 5,
+          }}
+        >
+          <Table sx={{ bgcolor: "snow" }} aria-label="simple table">
+            <TableHead>
+              <TableRow sx={{ bgcolor: "whitesmoke" }}>
+                <TableCell>Название</TableCell>
+                <TableCell align="right">Картинка</TableCell>
+                <TableCell align="right">Описание</TableCell>
+                <TableCell align="right">Стоимость</TableCell>
+                <TableCell>Изменить</TableCell>
+                <TableCell>Удалить</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {clothess.map((item) => (
+                <TableRow
+                  key={item.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <DeleteForeverRounded />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                  <TableCell component="th" scope="row">
+                    {item.name}
+                  </TableCell>
+                  <TableCell align="right">
+                    <img width={80} src={item.image} alt="clothes-img" />
+                  </TableCell>
+                  <TableCell align="right">{item.description}</TableCell>
+
+                  <TableCell align="right">{item.price}</TableCell>
+                  <TableCell>
+                    <Link to={`/edit${item.id}`}>
+                      <Button variant="outlined" color="warning">
+                        <ModeEditOutlineRounded />
+                      </Button>
+                    </Link>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      color="error"
+                      variant="outlined"
+                      onClick={() => dispatch(deleteClothes(item.id))}
+                    >
+                      <DeleteForeverRounded />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
+    </div>
   );
 };
 
