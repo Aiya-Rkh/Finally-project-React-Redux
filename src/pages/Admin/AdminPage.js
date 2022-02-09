@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteClothes, getClothes } from "../../redux/actions/AdminAction";
+import { deleteClothes } from "../../redux/actions/AdminAction";
 import { getClothess } from "../../redux/actions/ClientAction";
 
 const AdminPage = () => {
@@ -60,7 +60,6 @@ const AdminPage = () => {
           <Table sx={{ bgcolor: "snow" }} aria-label="simple table">
             <TableHead>
               <TableRow sx={{ bgcolor: "whitesmoke" }}>
-                <TableCell>Название</TableCell>
                 <TableCell align="right">Картинка</TableCell>
                 <TableCell align="right">Описание</TableCell>
                 <TableCell align="right">Стоимость</TableCell>
@@ -74,9 +73,6 @@ const AdminPage = () => {
                   key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
-                    {item.name}
-                  </TableCell>
                   <TableCell align="right">
                     <img width={80} src={item.image} alt="clothes-img" />
                   </TableCell>

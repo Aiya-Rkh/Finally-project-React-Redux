@@ -100,9 +100,11 @@ const WomensPage = () => {
                   </ul>
                   <Link to="">
                     <div className="btn-bay">
-                      <button>
-                        <h3>КУПИТЬ</h3>
-                      </button>
+                      <Link to="/new">
+                        <button>
+                          <h3>КУПИТЬ</h3>
+                        </button>
+                      </Link>
                     </div>
                   </Link>
                 </div>

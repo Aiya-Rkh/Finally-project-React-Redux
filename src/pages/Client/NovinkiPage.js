@@ -1,5 +1,5 @@
-import { Container, Grid } from "@mui/material";
-import React, { useEffect } from "react";
+import { Container, Grid, Pagination } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Novinki from "../../components/Novinki";
 import PaginationPage from "../../components/PaginationPage";
@@ -16,11 +16,30 @@ const NovinkiPage = () => {
   const dispatch = useDispatch();
   const { clothess } = useSelector((state) => state.clothesClientReducer);
 
+  const productsPerPage = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [posts, setPosts] = useState([]);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = posts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalProductsCount = posts.length;
+  // !куда передать его
+  console.log(currentProducts);
+  console.log(totalProductsCount, productsPerPage);
+  const count = Math.ceil(totalProductsCount / productsPerPage);
+
   useEffect(() => {
     dispatch(getClothess());
   }, []);
 
-  if (!clothess) {
+  useEffect(() => {
+    if (clothess) {
+      setPosts(clothess);
+    }
+  }, [clothess]);
+
+  if (!currentProducts) {
     return <h3>Loading</h3>;
   }
   return (
@@ -37,17 +56,25 @@ const NovinkiPage = () => {
           нашли отражение все новейшие тренды. У нас есть последние модели от
           наших любимых брендов, включая базовые повседневные вещи.
         </p>
-        <hr />
+
         <Filters />
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
-          {clothess.map((item) => (
+          {currentProducts.map((item) => (
             <Grid item xs={12} sm={6} md={3} key={item.id}>
               {/* props передаем под ключмо item в productcard*/}
               <Novinki item={item} />
             </Grid>
           ))}
         </Grid>
-        <PaginationPage />
+        <div className="pagination">
+          <Pagination
+            onChange={(_, value) => setCurrentPage(value)}
+            count={count}
+            variant="outlined"
+            shape="rounded"
+            sx={{ color: "red", marginBottom: "60px", marginLeft: "40%" }}
+          />
+        </div>
         {/* Пагинация */}
       </Container>
       <Footer />

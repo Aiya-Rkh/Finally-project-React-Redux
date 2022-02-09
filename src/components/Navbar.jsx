@@ -13,11 +13,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { AddShoppingCart, Favorite, FavoriteBorder } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import {
+  AddShoppingCart,
+  ExitToAppRounded,
+  Favorite,
+  FavoriteBorder,
+  Logout,
+} from "@mui/icons-material";
+import { Avatar, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getClothess } from "../redux/actions/ClientAction";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  authWithGoogle,
+  checkUser,
+  getClothess,
+  logout,
+} from "../redux/actions/ClientAction";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -36,6 +47,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
+  // position: "fixed",
   color: "black",
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -65,6 +77,12 @@ export default function NavbarWidthSearch() {
   const [searchValue, setSearchValue] = React.useState(search.get("q") || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { cartCount, favoriteCount, user } = useSelector(
+    (state) => state.clothesClientReducer
+  );
+  React.useEffect(() => {
+    dispatch(checkUser());
+  }, []);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -146,9 +164,10 @@ export default function NavbarWidthSearch() {
         </IconButton>
         <p>Избранное</p>
       </MenuItem>
+
       <MenuItem>
         <IconButton size="large" aria-label="" color="inherit">
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={cartCount} color="error">
             <AddShoppingCart />
           </Badge>
         </IconButton>
@@ -251,21 +270,25 @@ export default function NavbarWidthSearch() {
               aria-label=""
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
-                <Favorite />
-              </Badge>
+              <Link to="/favorite" style={{ color: "white" }}>
+                <Badge badgeContent={favoriteCount} color="warning">
+                  <Favorite />
+                </Badge>
+              </Link>
             </IconButton>
             <IconButton
               sx={{ mr: 3 }}
               size="large"
               aria-label=""
-              color="inherit"
+              // color="default"
             >
-              <Badge badgeContent={17} color="error">
-                <AddShoppingCart />
-              </Badge>
+              <Link to="/cart-page" style={{ color: "white" }}>
+                <Badge badgeContent={cartCount} color="warning">
+                  <AddShoppingCart />
+                </Badge>
+              </Link>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               sx={{ mr: 3 }}
               size="large"
               edge="end"
@@ -276,7 +299,29 @@ export default function NavbarWidthSearch() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
+            {user ? (
+              <>
+                {/* <IconButton size="small" color="inherit">
+                  {user.displayName}
+                </IconButton> */}
+                <IconButton sx={{ p: 0 }}>
+                  <Avatar alt={user.displayName} src={user.photoURL} />
+                </IconButton>
+                <IconButton size="large" color="inherit">
+                  <Logout onClick={logout}>out</Logout>
+                </IconButton>
+              </>
+            ) : (
+              <IconButton
+                onClick={() => dispatch(authWithGoogle)}
+                size="small"
+                color="inherit"
+              >
+                <ExitToAppRounded />
+                Вход
+              </IconButton>
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

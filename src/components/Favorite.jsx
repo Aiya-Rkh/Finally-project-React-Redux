@@ -1,4 +1,4 @@
-import { DeleteForever } from "@mui/icons-material";
+import { AddShoppingCart, DeleteForever } from "@mui/icons-material";
 import {
   Button,
   Container,
@@ -7,7 +7,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
   TableRow,
 } from "@mui/material";
@@ -16,24 +15,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
-  changeCount,
-  deleteClothesFromCart,
-  getCart,
+  addClothesToCart,
+  deleteClothesFromFavorite,
+  getFavorite,
 } from "../redux/actions/ClientAction";
 
-export default function CartTbl() {
+export default function Favorite() {
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.clothesClientReducer);
+  const { favorite } = useSelector((state) => state.clothesClientReducer);
 
   React.useEffect(() => {
-    dispatch(getCart());
-    console.log(cart);
+    dispatch(getFavorite());
   }, []);
 
-  if (!cart) {
+  if (!favorite) {
     return <h2>Loading...</h2>;
   }
-  console.log(cart);
+  console.log(favorite);
   return (
     <Container sx={{ marginBottom: "250px" }}>
       <TableContainer className="cart1" component={Paper}>
@@ -44,46 +42,36 @@ export default function CartTbl() {
           <TableHead>
             <TableRow>
               <TableCell align="right">Картинка</TableCell>
+              <TableCell align="right">Описание</TableCell>
               <TableCell align="right">Цена</TableCell>
-              <TableCell align="right">Колличество</TableCell>
-              <TableCell align="right">Сумма</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {cart.clothess.map((item) => (
+            {favorite.clothess.map((item) => (
               <TableRow
                 key={item.product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                {/* <TableCell component="th" scope="row">
-                  {item.product.name}
-                </TableCell> */}
                 <TableCell align="right">
                   {<img width="100" src={item.product.image} alt="" />}
                 </TableCell>
-                <TableCell align="right">{item.product.price} сом</TableCell>
-                <TableCell align="right">
-                  {
-                    <input
-                      min="1"
-                      onChange={(e) => {
-                        if (e.target.value < 1) {
-                          return;
-                        }
-                        dispatch(changeCount(e.target.value, item.product.id));
-                      }}
-                      type="number"
-                      value={item.count}
-                    />
-                  }
+                <TableCell component="th" scope="row">
+                  {item.product.description}
                 </TableCell>
-                <TableCell align="right">{item.subPrice} сом</TableCell>
+                <TableCell align="right">{item.product.price} сом</TableCell>
                 {/* Стянуть новые данные обноаление после удаления*/}
+                <Button
+                  color="error"
+                  sx={{ marginTop: "35px" }}
+                  onClick={() => dispatch(addClothesToCart(item.product))}
+                >
+                  <AddShoppingCart />
+                </Button>
                 <Button
                   color="inherit"
                   sx={{ marginTop: "35px" }}
                   onClick={() =>
-                    dispatch(deleteClothesFromCart(item.product.id))
+                    dispatch(deleteClothesFromFavorite(item.product.id))
                   }
                 >
                   <DeleteForever />
@@ -91,25 +79,15 @@ export default function CartTbl() {
               </TableRow>
             ))}
           </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={4} align="right">
-                <strong style={{ fontSize: 22 }}>Итоговая сумма:</strong>
-              </TableCell>
-              <TableCell colSpan={1} align="right">
-                <strong style={{ fontSize: 22 }}>{cart.totalPrice} сом</strong>
-              </TableCell>
-            </TableRow>
-          </TableFooter>
         </Table>
       </TableContainer>
-      <Link to="/tbot">
+      <Link to="/cart-page">
         <Button
           variant="outlined"
           color="warning"
           style={{ marginLeft: "40%", marginTop: "40px" }}
         >
-          Оформить заказ
+          Перейти в корзину
         </Button>
       </Link>
     </Container>

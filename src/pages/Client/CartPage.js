@@ -6,9 +6,14 @@ const CartPage = () => {
   return (
     <div>
       <Container>
-        <h2>Cart page</h2>
+        <h3
+          className="cart-tag
+        "
+        >
+          Вы выбрали для покупки
+        </h3>
+        <CartTbl />
       </Container>
-      <CartTbl />
     </div>
   );
 };

@@ -21,7 +21,7 @@ const EditPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    saveEditedClothes(clothesEdit);
+    dispacth(saveEditedClothes(clothesEdit));
     for (const key in clothesEdit) {
       if (!clothesEdit[key]) {
         alert("Заполните поля");
@@ -34,6 +34,7 @@ const EditPage = () => {
   useEffect(() => {
     setClothesEdit(clothesToEdit);
   }, [clothesToEdit]);
+  console.log(clothesEdit);
 
   useEffect(() => {
     dispacth(editClothes(params.id));
@@ -112,18 +113,9 @@ const EditPage = () => {
             >
               Редактировать товар
             </h3>
-            <TextField
-              value={clothesEdit.name}
-              onChange={(e) =>
-                setClothesEdit({ ...clothesEdit, name: e.target.value })
-              }
-              label="Название товара"
-              variant="outlined"
-              color="warning"
-            ></TextField>
 
             <TextField
-              value={clothesEdit.desciption}
+              value={clothesEdit.description}
               onChange={(e) =>
                 setClothesEdit({ ...clothesEdit, description: e.target.value })
               }
@@ -156,9 +148,9 @@ const EditPage = () => {
             <Button
               variant="contained"
               type="submit"
-              color="error"
+              color="warning"
               sx={{
-                bgcolor: "darkred",
+                bgcolor: "darkorange",
                 marginLeft: "28%",
                 width: "270px",
                 borderRadius: 5,

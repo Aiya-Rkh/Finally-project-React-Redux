@@ -63,8 +63,6 @@ const AddPage = () => {
         <Container
           style={{
             backgroundColor: "snow",
-            // display: "flex",
-            // justifyContent: "center",
             marginTop: "130px",
             borderRadius: "5px",
             width: "700px",
@@ -84,15 +82,6 @@ const AddPage = () => {
             >
               Добавить новый товар:
             </h3>
-            <TextField
-              value={newClothes.name}
-              onChange={(e) =>
-                setNewClothes({ ...newClothes, name: e.target.value })
-              }
-              label="Название"
-              variant="outlined"
-              color="warning"
-            />
 
             <TextField
               value={newClothes.description}

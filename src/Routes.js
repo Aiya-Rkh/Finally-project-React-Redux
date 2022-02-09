@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes as MyRoutes, Route } from "react-router-dom";
+import CartTbl from "./components/CartTbl";
 // import Novinki from "./components/Novinki";
 import AddPage from "./pages/Admin/AddPage";
 import AdminPage from "./pages/Admin/AdminPage";
@@ -9,6 +10,10 @@ import MainPage from "./pages/Client/MainPage";
 import NovinkiPage from "./pages/Client/NovinkiPage";
 import WomensPage from "./pages/Client/WomensPage";
 import { store } from "./store/store";
+import CartPage from "./pages/Client/CartPage";
+import OrderForm from "./components/OrderForm";
+import Favorite from "./components/Favorite";
+import CommentPage from "./pages/Client/CommentPage";
 
 const Routes = () => {
   return (
@@ -21,6 +26,10 @@ const Routes = () => {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/womens-clothes" element={<WomensPage />} />
           <Route path="/new" element={<NovinkiPage />} />
+          <Route path="/cart-page" element={<CartPage />} />
+          <Route path="/tbot" element={<OrderForm />} />
+          <Route path="/favorite" element={<Favorite />} />
+          <Route path="/comment/:id" element={<CommentPage />} />
         </MyRoutes>
       </BrowserRouter>
     </Provider>

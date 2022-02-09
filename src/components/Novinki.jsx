@@ -1,12 +1,38 @@
 import {
+  AddCircleOutlined,
+  AddShoppingCartRounded,
+  CommentOutlined,
+  Favorite,
+  FavoriteBorderOutlined,
+  FavoriteOutlined,
+} from "@mui/icons-material";
+import {
+  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import {
+  addClothesToCart,
+  addClothesToFavorite,
+  checkClothesInCart,
+  checkClothesInFavorite,
+  deleteClothesFromCart,
+  deleteClothesFromFavorite,
+} from "../redux/actions/ClientAction";
 
 const Novinki = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {}, [dispatch]);
+  // const {  } =
+  //   useSelector((state) => state.clothesClientReducer);
+
   return (
     <>
       <Card
@@ -39,27 +65,75 @@ const Novinki = (props) => {
           </Typography>
         </CardContent>
         <CardActions style={{ display: "flex", justicyContent: "spaceAround" }}>
-          {/* {checkProductInCart(props.item.id) ? (
-          <Button
-            onClick={() => deleteProductFromCart(props.item.id)}
-            size="small"
-            variant="contained"
-            color="error"
-            sx={{ marginLeft: "15px", bottom: "10px", position: "absolute" }}
-          >
-            <AddShoppingCartRounded />
-          </Button>
-        ) : (
-          <Button
-            onClick={() => addProductToCart(props.item)}
-            size="small"
-            variant="outlined"
-            style={{ marginLeft: "15px", bottom: "10px", position: "absolute" }}
-            color="error"
-          >
-            <AddShoppingCartRounded />
-          </Button>
-        )} */}
+          {checkClothesInFavorite(props.item.id) ? (
+            <Button
+              onClick={() => dispatch(deleteClothesFromFavorite(props.item.id))}
+              size="small"
+              // variant="contained"
+              color="warning"
+              sx={{ marginLeft: "50px", bottom: "10px", position: "absolute" }}
+            >
+              <FavoriteOutlined />
+            </Button>
+          ) : (
+            <Button
+              onClick={() => dispatch(addClothesToFavorite(props.item))}
+              size="small"
+              // variant="outlined"
+              style={{
+                marginLeft: "50px",
+                bottom: "10px",
+                position: "absolute",
+              }}
+              color="warning"
+            >
+              <FavoriteBorderOutlined />
+            </Button>
+          )}
+
+          {checkClothesInCart(props.item.id) ? (
+            <Button
+              onClick={() => dispatch(deleteClothesFromCart(props.item.id))}
+              size="small"
+              // variant="contained"
+              color="warning"
+              sx={{
+                marginLeft: "15px",
+                bottom: "10px",
+                position: "absolute",
+              }}
+            >
+              <AddCircleOutlined />
+            </Button>
+          ) : (
+            <Button
+              onClick={() => dispatch(addClothesToCart(props.item))}
+              size="small"
+              // variant="outlined"
+              style={{
+                marginLeft: "8px",
+                bottom: "10px",
+                position: "absolute",
+              }}
+              color="warning"
+            >
+              <AddShoppingCartRounded />
+            </Button>
+          )}
+          <Link to={`/comment/${props.item.id}`}>
+            <Button
+              size="small"
+              // variant="outlined"
+              style={{
+                marginLeft: "90px",
+                bottom: "10px",
+                position: "absolute",
+              }}
+              color="warning"
+            >
+              <CommentOutlined />
+            </Button>
+          </Link>
 
           <Typography
             comsponent="div"
