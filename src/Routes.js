@@ -14,6 +14,8 @@ import CartPage from "./pages/Client/CartPage";
 import OrderForm from "./components/OrderForm";
 import Favorite from "./components/Favorite";
 import CommentPage from "./pages/Client/CommentPage";
+import FavoritePage from "./pages/Client/FavoritePage";
+import FormPage from "./pages/Client/FormPage";
 
 const Routes = () => {
   return (
@@ -27,8 +29,8 @@ const Routes = () => {
           <Route path="/womens-clothes" element={<WomensPage />} />
           <Route path="/new" element={<NovinkiPage />} />
           <Route path="/cart-page" element={<CartPage />} />
-          <Route path="/tbot" element={<OrderForm />} />
-          <Route path="/favorite" element={<Favorite />} />
+          <Route path="/tbot" element={<FormPage />} />
+          <Route path="/favorite" element={<FavoritePage />} />
           <Route path="/comment/:id" element={<CommentPage />} />
         </MyRoutes>
       </BrowserRouter>

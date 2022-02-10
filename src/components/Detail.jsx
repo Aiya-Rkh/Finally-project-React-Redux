@@ -1,3 +1,4 @@
+import { ArrowBackIosOutlined } from "@mui/icons-material";
 import { Button, Container } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -25,12 +26,22 @@ const Detail = () => {
     <div>
       <Container>
         {/* <Link to="/">Назад</Link> */}
-        <Button onClick={() => navigate(-1)} variant="text">
+        <Button
+          onClick={() => navigate(-1)}
+          variant="text"
+          color="inherit"
+          style={{ marginTop: "28px" }}
+        >
+          <ArrowBackIosOutlined />
           Назад
         </Button>
         <div className="detail-page">
           <div className="detail-left-img">
-            <img style={{ width: "30%" }} src={detail.image} alt="detail" />
+            <img
+              style={{ width: "40%", marginBottom: "20px" }}
+              src={detail.image}
+              alt="detail"
+            />
           </div>
           <div className="detail-right">
             <li>

@@ -1,4 +1,4 @@
-import { DeleteForever } from "@mui/icons-material";
+import { ArrowBackIosOutlined, DeleteForever } from "@mui/icons-material";
 import {
   Button,
   Container,
@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   changeCount,
@@ -23,6 +23,7 @@ import {
 
 export default function CartTbl() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cart } = useSelector((state) => state.clothesClientReducer);
 
   React.useEffect(() => {
@@ -35,18 +36,23 @@ export default function CartTbl() {
   }
   console.log(cart);
   return (
-    <Container sx={{ marginBottom: "250px" }}>
+    <Container style={{ marginBottom: "250px" }}>
+      <Button onClick={() => navigate(-1)} variant="text" color="inherit">
+        <ArrowBackIosOutlined />
+        Назад
+      </Button>
       <TableContainer className="cart1" component={Paper}>
         <Table
-          sx={{ minWidth: 650, bgcolor: "snow" }}
+          style={{ minWidth: 650, backgroundColor: "ThreeDHighlight" }}
           aria-label="simple table"
         >
           <TableHead>
-            <TableRow>
+            <TableRow style={{ backgroundColor: "ThreeDFace" }}>
               <TableCell align="right">Картинка</TableCell>
               <TableCell align="right">Цена</TableCell>
               <TableCell align="right">Колличество</TableCell>
               <TableCell align="right">Сумма</TableCell>
+              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -55,9 +61,6 @@ export default function CartTbl() {
                 key={item.product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                {/* <TableCell component="th" scope="row">
-                  {item.product.name}
-                </TableCell> */}
                 <TableCell align="right">
                   {<img width="100" src={item.product.image} alt="" />}
                 </TableCell>
@@ -81,7 +84,7 @@ export default function CartTbl() {
                 {/* Стянуть новые данные обноаление после удаления*/}
                 <Button
                   color="inherit"
-                  sx={{ marginTop: "35px" }}
+                  sx={{ marginTop: "28%" }}
                   onClick={() =>
                     dispatch(deleteClothesFromCart(item.product.id))
                   }

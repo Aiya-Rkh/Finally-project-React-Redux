@@ -44,7 +44,8 @@ const OrderForm = () => {
       <Container
         sx={{
           bgcolor: "snow",
-          marginTop: "130px",
+          marginTop: "50px",
+          marginBottom: "100px",
           borderRadius: 5,
           width: "700px",
         }}

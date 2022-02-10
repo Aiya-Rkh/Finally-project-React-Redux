@@ -356,15 +356,16 @@ h2 {
 }
 
 .detail-page {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 50px;
-  /* width: 50%; */
+  align-items: center; */
+  margin-bottom: 50px;
+  width: 50%;
+  background-color: rgb(231, 229, 229);
 }
 
 .comment-h3 {
-  text-align: center;
+  text-align: justify;
   margin: 20px;
 }
 

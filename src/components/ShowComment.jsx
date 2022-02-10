@@ -17,12 +17,21 @@ const ShowComment = () => {
   }
 
   return (
-    <form>
+    <form style={{ marginLeft: "12%", marginBottom: "5px" }}>
       <TableBody>
         {comment.map((item) => (
-          <TableRow>
-            <TableCell>{item.comment}</TableCell>
-            <TableCell>{item.name}</TableCell>
+          <TableRow
+            style={{
+              backgroundColor: "ThreeDHighlight",
+              marginBottom: "5px",
+            }}
+          >
+            <div>
+              <TableCell>{item.comment}</TableCell>
+            </div>
+            <div>
+              <TableCell>коммент от {item.name}</TableCell>
+            </div>
             <TableCell>
               <Button
                 color="error"

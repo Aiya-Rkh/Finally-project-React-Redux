@@ -20,7 +20,7 @@ const Footer = () => {
           alt=""
         />
         <img
-          src="https://cdn-icons.flaticon.com/png/128/2504/premium/2504953.png?token=exp=1644209263~hmac=684c5a36c081f6b263c77b62fc97e996"
+          src="https://cdn-icons.flaticon.com/png/128/3256/premium/3256027.png?token=exp=1644439992~hmac=05e04a7a8b7c59f719ab6e3d11f3aeca"
           alt=""
         />
         <img
@@ -29,7 +29,7 @@ const Footer = () => {
         />
         <img
           className="line-icon"
-          src="https://cdn-icons.flaticon.com/png/128/649/premium/649686.png?token=exp=1644209171~hmac=0fa5df5f8c946a9b54a997c48abe7179"
+          src="https://cdn-icons.flaticon.com/png/128/649/premium/649686.png?token=exp=1644440061~hmac=f74ec7e94dab6a2ccf9810708551caed"
           alt=""
         />
         <span>

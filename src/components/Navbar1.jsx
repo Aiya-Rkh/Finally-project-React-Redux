@@ -61,7 +61,7 @@ export default function Navbar1() {
             display: { md: "none" },
           }}
         >
-          <Typography variant="h9">
+          <Typography style={{ fontSize: "14px" }}>
             ВПЕРВЫЕ ЗДЕСЬ? Получи скидку -20% с промокодом: HEYYOU
           </Typography>
         </Box>

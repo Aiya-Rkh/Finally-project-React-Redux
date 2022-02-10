@@ -208,7 +208,7 @@ export default function NavbarWidthSearch() {
             style={{ marginRight: "2%" }}
             sx={{ display: { sm: "block" } }}
           >
-            <Link to="/">
+            <Link to="/womens-clothes">
               <img
                 style={{ width: "100px", paddingTop: "9px" }}
                 src="https://www.spellbrand.com/images/blog/images/asos-boutique-logo-design.jpg"

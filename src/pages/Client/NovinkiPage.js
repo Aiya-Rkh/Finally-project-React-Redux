@@ -2,7 +2,6 @@ import { Container, Grid, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Novinki from "../../components/Novinki";
-import PaginationPage from "../../components/PaginationPage";
 import { getClothess } from "../../redux/actions/ClientAction";
 
 import Navbar from "../../components/Navbar";
@@ -20,14 +19,13 @@ const NovinkiPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState([]);
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = posts.slice(indexOfFirstProduct, indexOfLastProduct);
-  const totalProductsCount = posts.length;
+  const indexOfLastProduct = currentPage * productsPerPage; //?1*8
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage; //?8-8
+  const currentProducts = posts.slice(indexOfFirstProduct, indexOfLastProduct); //?0.8
+  const totalProductsCount = posts.length; //?21
   // !куда передать его
   console.log(currentProducts);
-  console.log(totalProductsCount, productsPerPage);
-  const count = Math.ceil(totalProductsCount / productsPerPage);
+  const count = Math.ceil(totalProductsCount / productsPerPage); //?21/8=3
 
   useEffect(() => {
     dispatch(getClothess());
@@ -42,6 +40,7 @@ const NovinkiPage = () => {
   if (!currentProducts) {
     return <h3>Loading</h3>;
   }
+
   return (
     <>
       <Navbar />

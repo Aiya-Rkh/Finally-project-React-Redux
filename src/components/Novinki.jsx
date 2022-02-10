@@ -41,7 +41,7 @@ const Novinki = (props) => {
           padding: 0,
           margin: 0,
           marginTop: "50px",
-          height: "80%",
+          height: "90%",
           position: "relative",
           // paddingBottom: "15px",
         }}

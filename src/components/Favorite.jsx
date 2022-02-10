@@ -1,4 +1,8 @@
-import { AddShoppingCart, DeleteForever } from "@mui/icons-material";
+import {
+  AddShoppingCart,
+  ArrowBackIosOutlined,
+  DeleteForever,
+} from "@mui/icons-material";
 import {
   Button,
   Container,
@@ -12,7 +16,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   addClothesToCart,
@@ -22,6 +26,7 @@ import {
 
 export default function Favorite() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { favorite } = useSelector((state) => state.clothesClientReducer);
 
   React.useEffect(() => {
@@ -34,16 +39,25 @@ export default function Favorite() {
   console.log(favorite);
   return (
     <Container sx={{ marginBottom: "250px" }}>
+      <h3 style={{ margin: "40px", textAlign: "center", fontSize: "24px" }}>
+        Избранное
+      </h3>
+      <Button onClick={() => navigate(-1)} variant="text" color="inherit">
+        <ArrowBackIosOutlined />
+        Назад
+      </Button>
       <TableContainer className="cart1" component={Paper}>
         <Table
-          sx={{ minWidth: 650, bgcolor: "snow" }}
+          style={{ minWidth: 650, backgroundColor: "ThreeDHighlight" }}
           aria-label="simple table"
         >
           <TableHead>
-            <TableRow>
+            <TableRow style={{ backgroundColor: "ThreeDFace" }}>
               <TableCell align="right">Картинка</TableCell>
               <TableCell align="right">Описание</TableCell>
               <TableCell align="right">Цена</TableCell>
+              <TableCell align="right"></TableCell>
+              {/* <TableCell align="right">Удалить</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -55,21 +69,20 @@ export default function Favorite() {
                 <TableCell align="right">
                   {<img width="100" src={item.product.image} alt="" />}
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {item.product.description}
-                </TableCell>
+
+                <TableCell align="right">{item.product.description}</TableCell>
                 <TableCell align="right">{item.product.price} сом</TableCell>
                 {/* Стянуть новые данные обноаление после удаления*/}
                 <Button
                   color="error"
-                  sx={{ marginTop: "35px" }}
+                  sx={{ marginTop: "28%" }}
                   onClick={() => dispatch(addClothesToCart(item.product))}
                 >
                   <AddShoppingCart />
                 </Button>
                 <Button
                   color="inherit"
-                  sx={{ marginTop: "35px" }}
+                  sx={{ marginTop: "28%", width: "40%" }}
                   onClick={() =>
                     dispatch(deleteClothesFromFavorite(item.product.id))
                   }
